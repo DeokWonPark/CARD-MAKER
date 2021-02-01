@@ -1,0 +1,44 @@
+@value makerGreen from '../../common/color.css';
+@value makerWhite from '../../common/color.css';
+@value makerBlack from '../../common/color.css';
+header{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    background: makerGreen;
+    padding: 0 80px;
+}
+header .headerBtns{
+    display: flex;
+    justify-content: center;
+    align-items: flex-end;
+    position: relative;
+    width: 100%;
+}
+header .headerBtns img{
+    width: 60px;
+    height: 40px;
+    margin-top: 10px;
+}
+header .headerBtns button{
+    visibility: hidden;
+    position: absolute;
+    top: 6px;
+    right: 10px;
+    background: makerBlack;
+    color: makerWhite;
+    border: none;
+    padding: 5px;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: transform 0.03s ease-in;
+}
+header .headerBtns button:hover{
+    transform: scale(1.03);
+}
+header h2{
+    color: makerWhite;
+    font-weight: 600;
+    font-size: 28px;
+    padding-bottom: 5px; 
+}
