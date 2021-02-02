@@ -1,0 +1,23 @@
+@value makerWhite from '../../common/color.css';
+@value makerGreen from '../../common/color.css';
+@value makerLightGrey from '../../common/color.css';
+.cardmaker{
+    flex-basis: 50%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    height: 86vh;
+    background: makerWhite;
+    overflow: auto;
+    border-right: 2px solid makerLightGrey;
+}
+.cardmaker::-webkit-scrollbar {
+    display: none;
+}
+.cardmaker h2{
+    margin-top: 20px;
+    color: makerGreen;
+}
+.cardmaker ul{
+    padding: 0 10px;
+}

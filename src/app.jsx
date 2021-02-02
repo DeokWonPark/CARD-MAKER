@@ -6,9 +6,56 @@ import Footer from './components/footer/footer'
 import CardPreview from './components/cardPreview/cardPreview';
 import CardMaker from './components/cardMaker/cardMaker';
 import { useState } from 'react';
+import userEvent from '@testing-library/user-event';
 
 
 function App(props) {
+
+  const [card, setCard]=useState([
+    {
+        name:"ellie",
+        company:"Kakao",
+        color:"Light",
+        Title:"SoftEnginner",
+        email:"ejrdnjs96@gmail.com",
+        discription:"Heool world",
+        img:"./images/default_logo.png"
+    },
+    {
+      name:"ejrdnjs",
+      company:"Naver",
+      color:"Light",
+      Title:"SoftEnginner",
+      email:"ejrdnjs97@gmail.com",
+      discription:"Heool world",
+      img:"./images/default_logo.png"
+  },
+  {
+    name:"guswns",
+    company:"NHN",
+    color:"Light",
+    Title:"SoftEnginner",
+    email:"ejrdnjs98@gmail.com",
+    discription:"Heool world",
+    img:"./images/default_logo.png"
+  },
+  {
+    name:"ellie",
+    company:"Kakao",
+    color:"Light",
+    Title:"SoftEnginner",
+    email:"ejrdnjs99@gmail.com",
+    discription:"Heool world",
+    img:"./images/default_logo.png"
+  },
+  ]);
+
+  const handleLogout=async ()=>{
+    console.log("logout");
+    //await props.auth_service.logout();
+    await props.auth_service.logout();
+    return props.auth_service.user;
+  }
 
   return <BrowserRouter>
     <Switch>
@@ -23,9 +70,11 @@ function App(props) {
       </Route>
       <Route path={"/app"}>
         <div className="main">
-          <Header></Header>
-          <CardMaker></CardMaker>
-          <CardPreview></CardPreview>
+          <Header onLogout={handleLogout}></Header>
+          <div className="contents">
+            <CardMaker card={card}></CardMaker>
+            <CardPreview card={card}></CardPreview>
+          </div>
           <Footer></Footer>
         </div>
       </Route>

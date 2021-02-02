@@ -9,7 +9,7 @@ const Login = (props) => {
         await props.authObj.login(event.target.textContent);
         const user=props.authObj.user;
         const token=props.authObj.token;
-        if(user!==null && token!==null){
+        if(token!==null){
             history.push('/app');
         }
     }

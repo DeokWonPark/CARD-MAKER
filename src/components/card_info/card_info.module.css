@@ -1,0 +1,39 @@
+@value makerGreen from '../../common/color.css';
+@value makerWhite from '../../common/color.css';
+form.editor{
+    display: flex;
+    width: 100%;
+    flex-wrap: wrap;
+    border: 0;
+    border-top: 1px solid makerGreen;
+    border-left: 1px solid makerGreen;
+    margin: 20px 0;
+}
+.input,
+.select,
+.text,
+.file,
+.button{
+    width: 100%;
+    border: 0;
+    padding: 0.5em;
+    border-bottom: 1px solid makerGreen;
+    border-right: 1px solid makerGreen;
+}
+.input,
+.select{
+    flex: 1 1 30%;
+}
+
+.file,
+.button{
+    flex: 1 1 50%;
+    cursor: pointer;
+}
+.button{
+    background: makerGreen;
+    color: makerWhite;
+}
+.text{
+    flex-basis: 100%;
+}

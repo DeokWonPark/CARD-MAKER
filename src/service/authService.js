@@ -7,11 +7,13 @@ class AuthService{
         this.user=null;
     }
     login(providerName){
+      console.log("login")
         const provider = new firebase.auth[`${providerName}AuthProvider`]();
         return firebaseApp.auth()
         .signInWithPopup(provider)
         .then((result) => {
             /** @type {firebase.auth.OAuthCredential} */
+            console.log(result);
             const credential = result.credential;
             const token = credential.accessToken;
             this.token=token;
@@ -23,7 +25,26 @@ class AuthService{
             const errorMessage = error.message;
             const email = error.email;
             const credential = error.credential;
+            console.log(error);
           });
+    }
+
+    logout(){
+      return firebaseApp.auth().signOut()
+              .then(()=>{
+                this.token=null;
+                this.user=null;
+                this.see();
+              }).catch((error)=> console.log(error ,"error"));
+    }
+    see(){
+      return firebaseApp.auth().onAuthStateChanged(function(user) {
+        if (user) {
+          console.log(user);
+        } else {
+          console.log("정상적인 로그아웃");
+        }
+      });
     }
 }
 
