@@ -39,15 +39,16 @@ function App(props) {
     discription:"Heool world",
     img:"./images/default_logo.png"
   },
-  {
-    name:"ellie",
-    company:"Kakao",
-    color:"Light",
-    Title:"SoftEnginner",
-    email:"ejrdnjs99@gmail.com",
-    discription:"Heool world",
-    img:"./images/default_logo.png"
-  },
+  {},
+  // {
+  //   name:"ellie",
+  //   company:"Kakao",
+  //   color:"Light",
+  //   Title:"SoftEnginner",
+  //   email:"ejrdnjs99@gmail.com",
+  //   discription:"Heool world",
+  //   img:"./images/default_logo.png"
+  // },
   ]);
 
   const handleLogout=async ()=>{
@@ -55,6 +56,23 @@ function App(props) {
     //await props.auth_service.logout();
     await props.auth_service.logout();
     return props.auth_service.user;
+  }
+
+  const handlefileUpload=async (files,cardItem)=>{
+    console.log(files);
+    if(files.length!==0){
+      const img_info=await props.clouldnary.uploadfile(files);
+      const card_temp=card.map((item)=>{
+        if(item.email===cardItem.email){
+          return {...cardItem,img:img_info.secure_url};
+        }
+        return item;
+      });
+      setCard(card_temp);
+      console.log(card_temp);
+      // const card[0]={...card,count:1}
+      return img_info;
+    }
   }
 
   return <BrowserRouter>
@@ -72,7 +90,7 @@ function App(props) {
         <div className="main">
           <Header onLogout={handleLogout}></Header>
           <div className="contents">
-            <CardMaker card={card}></CardMaker>
+            <CardMaker card={card} onUpload={handlefileUpload}></CardMaker>
             <CardPreview card={card}></CardPreview>
           </div>
           <Footer></Footer>

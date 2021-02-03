@@ -16,6 +16,7 @@ class AuthService{
             console.log(result);
             const credential = result.credential;
             const token = credential.accessToken;
+            console.log(token);
             this.token=token;
 
             const user = result.user;
@@ -38,11 +39,13 @@ class AuthService{
               }).catch((error)=> console.log(error ,"error"));
     }
     see(){
-      return firebaseApp.auth().onAuthStateChanged(function(user) {
+      firebaseApp.auth().onAuthStateChanged(function(user) {
         if (user) {
           console.log(user);
+          return user;
         } else {
           console.log("정상적인 로그아웃");
+          return null;
         }
       });
     }

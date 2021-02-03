@@ -7,7 +7,9 @@ const CardPreview = ({card}) => {
         <h2>Card Preview</h2>
         <ul>
             {card.map((cardItem)=>{
-                return <Card cardItem={cardItem} key={cardItem.email}></Card>
+                if(Object.keys(cardItem).length!==0){
+                    return <Card cardItem={cardItem} key={cardItem.email}></Card>
+                }
             })}
         </ul>
     </section>

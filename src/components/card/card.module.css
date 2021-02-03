@@ -15,6 +15,7 @@
     height: 170px;
     margin-right: 25px;
     flex-basis: 20%;
+    border-radius: 50%;
 }
 .card .userInfo{
     flex-basis: 60%;
