@@ -36,6 +36,7 @@
 .file{
     display: flex;
     justify-content: center;
+    background: lightgray;
 }
 .file .loader{
     border: 3px solid #f3f3f3; 

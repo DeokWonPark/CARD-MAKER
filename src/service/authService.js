@@ -13,10 +13,8 @@ class AuthService{
         .signInWithPopup(provider)
         .then((result) => {
             /** @type {firebase.auth.OAuthCredential} */
-            console.log(result);
             const credential = result.credential;
             const token = credential.accessToken;
-            console.log(token);
             this.token=token;
 
             const user = result.user;

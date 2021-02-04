@@ -1,59 +1,52 @@
 import './app.css';
-import { BrowserRouter ,Switch, Route} from 'react-router-dom';
+import { BrowserRouter ,Switch, Route, useHistory} from 'react-router-dom';
 import Header from './components/header/header'
 import Login from './components/Login/login'
 import Footer from './components/footer/footer'
-import CardPreview from './components/cardPreview/cardPreview';
-import CardMaker from './components/cardMaker/cardMaker';
-import { useState } from 'react';
-import userEvent from '@testing-library/user-event';
-
+import CardPage from './components/cardPage/cardPage';
+import { useEffect, useState } from 'react';
 
 function App(props) {
 
   const [card, setCard]=useState([
-    {
-        name:"ellie",
-        company:"Kakao",
-        color:"Light",
-        Title:"SoftEnginner",
-        email:"ejrdnjs96@gmail.com",
-        discription:"Heool world",
-        img:"./images/default_logo.png"
-    },
-    {
-      name:"ejrdnjs",
-      company:"Naver",
-      color:"Light",
-      Title:"SoftEnginner",
-      email:"ejrdnjs97@gmail.com",
-      discription:"Heool world",
-      img:"./images/default_logo.png"
-  },
-  {
-    name:"guswns",
-    company:"NHN",
-    color:"Light",
-    Title:"SoftEnginner",
-    email:"ejrdnjs98@gmail.com",
-    discription:"Heool world",
-    img:"./images/default_logo.png"
-  },
-  {},
-  // {
-  //   name:"ellie",
-  //   company:"Kakao",
-  //   color:"Light",
-  //   Title:"SoftEnginner",
-  //   email:"ejrdnjs99@gmail.com",
-  //   discription:"Heool world",
-  //   img:"./images/default_logo.png"
-  // },
+    
   ]);
+
+  
+  const dataRead=()=>{
+    if(props.auth_service.user!==null){
+      const userInfoRef=props.database.dataRead(props.auth_service.user.displayName);
+      let datas;
+      let card_temp=[];
+      userInfoRef.on('value', (snapshot) => {
+        datas = snapshot.val();
+        if(datas!==null){
+          card_temp=[...card];
+          Object.keys(datas).map((data)=>{
+            console.log(datas[data]);
+            if(datas[data]!==null){
+              card_temp.push(datas[data]);
+            }
+          });
+          setCard(card_temp);
+        }
+      });
+    }
+  }
+
+  const dataWrite=(cardItem)=>{
+    props.database.dataWrite(props.auth_service.user.displayName,cardItem.username,
+      cardItem.company,cardItem.color,
+      cardItem.title,cardItem.email,cardItem.description,cardItem.img,cardItem.imgName);
+  }
+
+  const dataDelete=()=>{
+    console.log("delete");
+  }
 
   const handleLogout=async ()=>{
     console.log("logout");
-    //await props.auth_service.logout();
+    setCard([]);
     await props.auth_service.logout();
     return props.auth_service.user;
   }
@@ -69,8 +62,6 @@ function App(props) {
         return item;
       });
       setCard(card_temp);
-      console.log(card_temp);
-      // const card[0]={...card,count:1}
       return img_info;
     }
   }
@@ -90,8 +81,14 @@ function App(props) {
         <div className="main">
           <Header onLogout={handleLogout}></Header>
           <div className="contents">
-            <CardMaker card={card} onUpload={handlefileUpload}></CardMaker>
-            <CardPreview card={card}></CardPreview>
+            <CardPage
+            card={card}
+            auth={props.auth_service}
+            onUpload={handlefileUpload}
+            onAdd={dataWrite}
+            onDelete={dataDelete}
+            onRead={dataRead}
+            ></CardPage>
           </div>
           <Footer></Footer>
         </div>

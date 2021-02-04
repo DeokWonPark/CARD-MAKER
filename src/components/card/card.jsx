@@ -1,16 +1,33 @@
-import React from 'react';
+import React, { useRef,useEffect } from 'react';
 import styles from './card.module.css';
 
 const Card = ({cardItem}) => {
-    return <div className={styles.card}>  
+    const cardref=useRef();
+    useEffect(()=>{
+        setup();
+    },[]);
+
+    const setup=()=>{
+        if(cardItem.color==='Dark'){
+            cardref.current.classList.add(styles.dark);
+        }
+        else if(cardItem.color==='Light'){
+            cardref.current.classList.add(styles.light);
+        }
+        else{
+            cardref.current.classList.add(styles.colorful);
+        }
+    }
+
+    return <div className={styles.card} ref={cardref}>  
         <img src={cardItem.img} alt="user_img" className={styles.userImg}/>
         <span className={styles.userInfo}>
-            <h3>{cardItem.name}</h3>
+            <h3>{cardItem.userName}</h3>
             <p>{cardItem.company}</p>
             <hr/>
-            <p>{cardItem.Title}</p>
+            <p>{cardItem.title}</p>
             <p>{cardItem.email}</p>
-            <p>{cardItem.discription}</p>
+            <p>{cardItem.description}</p>
         </span>
     </div>
 }

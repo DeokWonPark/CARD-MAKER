@@ -1,5 +1,7 @@
 @value makerShadow from '../../common/color.css';
 @value makerWhite from '../../common/color.css';
+@value makerBlack from '../../common/color.css';
+@value makerColorful from '../../common/color.css';
 .card{
     display: flex;
     width: 70%;
@@ -9,6 +11,16 @@
     border-radius: 30px;
     background-color: rgb(40, 37, 82);
     color: makerWhite;
+}
+.card.dark{
+    background:makerBlack;
+}
+.card.light{
+    background:makerWhite;
+    color: makerBlack;
+}
+.card.colorful{
+    background:makerColorful;
 }
 .card .userImg{
     width: 170px;
