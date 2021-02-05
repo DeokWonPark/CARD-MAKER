@@ -7,6 +7,7 @@ const Header = (props) => {
     const handleLogout=async ()=>{
         const user=await props.onLogout();
         if(user===null){
+            sessionStorage.removeItem('users');
             history.push("/");
         }
     }

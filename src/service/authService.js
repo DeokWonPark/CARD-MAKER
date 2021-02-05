@@ -39,7 +39,6 @@ class AuthService{
     see(){
       firebaseApp.auth().onAuthStateChanged(function(user) {
         if (user) {
-          console.log(user);
           return user;
         } else {
           console.log("정상적인 로그아웃");

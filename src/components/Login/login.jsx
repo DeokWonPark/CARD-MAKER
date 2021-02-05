@@ -10,6 +10,11 @@ const Login = (props) => {
         const user=props.authObj.user;
         const token=props.authObj.token;
         if(token!==null){
+            const users={
+                user:user,
+                token:token,
+            }
+            sessionStorage.setItem('users',JSON.stringify(users));
             history.push('/app');
         }
     }

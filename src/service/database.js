@@ -3,9 +3,9 @@ import firebaseApp from "./firebase";
 
 class Database{
 
-    dataWrite=(userId,userName,company,color,title,email,description,img,imgName)=>{
+    dataWrite=(userId,userName,username,company,color,title,email,description,img,imgName)=>{
         firebase.database().ref('users/'+ `${userId}/` + `${userName}/`).set({
-            username: userName,
+            username: username,
             company:company,
             color:color,
             title:title,

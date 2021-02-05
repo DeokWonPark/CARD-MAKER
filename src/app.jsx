@@ -11,8 +11,17 @@ function App(props) {
   const [card, setCard]=useState([
     
   ]);
+  const [user,setUser]=useState(props.auth_service.user);
+  const [token,setToken]=useState(props.auth_service.token);
 
-  
+  useEffect(()=>{
+    if(sessionStorage.getItem('users')!==null){
+      setUser(JSON.parse(sessionStorage.getItem('users'))['user']);
+      setToken(JSON.parse(sessionStorage.getItem('users'))['token']);
+      props.auth_service.user=JSON.parse(sessionStorage.getItem('users'))['user'];
+      props.auth_service.token=JSON.parse(sessionStorage.getItem('users'))['token'];
+    }
+  },[])
   const dataRead=()=>{
     if(props.auth_service.user!==null){
       const userInfoRef=props.database.dataRead(props.auth_service.user.displayName);
@@ -35,12 +44,21 @@ function App(props) {
   }
 
   const dataWrite=(cardItem)=>{
-    props.database.dataWrite(props.auth_service.user.displayName,cardItem.username,
+    props.database.dataWrite(props.auth_service.user.displayName,cardItem.username,cardItem.username,
       cardItem.company,cardItem.color,
       cardItem.title,cardItem.email,cardItem.description,cardItem.img,cardItem.imgName);
   }
 
-  const dataDelete=()=>{
+  const dataDelete=async(cardItem)=>{
+    await props.database.dataWrite(props.auth_service.user.displayName,cardItem.username,null,null,null,null,null,null,null,null);
+    const newCard=[];
+    card.map((item)=>{
+      console.log(item.username);
+      if(item.username!==cardItem.username){
+        newCard.push(item);
+      }
+    });
+    setCard(newCard);
     console.log("delete");
   }
 

@@ -22,7 +22,7 @@ const Card = ({cardItem}) => {
     return <div className={styles.card} ref={cardref}>  
         <img src={cardItem.img} alt="user_img" className={styles.userImg}/>
         <span className={styles.userInfo}>
-            <h3>{cardItem.userName}</h3>
+            <h3>{cardItem.username}</h3>
             <p>{cardItem.company}</p>
             <hr/>
             <p>{cardItem.title}</p>
