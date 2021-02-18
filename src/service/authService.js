@@ -19,6 +19,7 @@ class AuthService{
 
             const user = result.user;
             this.user=user;
+            return result;
           }).catch((error) => {
             const errorCode = error.code;
             const errorMessage = error.message;
@@ -26,6 +27,12 @@ class AuthService{
             const credential = error.credential;
             console.log(error);
           });
+    }
+
+    onAuthChange(onUserChanged){
+      firebase.auth().onAuthStateChanged((user)=>{
+        onUserChanged(user);
+      })
     }
 
     logout(){
