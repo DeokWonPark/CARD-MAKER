@@ -1,0 +1,18 @@
+.Editor{
+    flex: 1;
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    overflow-y: auto;
+}
+.Editor::-webkit-scrollbar {
+    display: none; 
+}
+.Editor .title{
+    color: white;
+    padding-top: 10px;
+}
+.Editor .editorBox{
+    padding: 20px;
+}

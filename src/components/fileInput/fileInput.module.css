@@ -1,0 +1,18 @@
+.File{
+    width: 48%;
+}
+.File .fileInput{
+    display: none;
+}
+.File .fileBtn{
+    width: 100%;
+    padding: 5px;
+    font-weight: 700;
+    box-sizing: border-box;
+    border-radius: 5px;
+    background-color: rgb(205, 211, 221);
+    cursor: pointer;
+}
+.File .fileBtn:hover{
+    opacity: 0.9;
+}

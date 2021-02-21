@@ -6,16 +6,17 @@
     align-items: center;
 }
 .header .title{
-    /* width: 30%; */
+    width: 400px;
     display: flex;
     background: #80c4f8de;
-    padding: 15px 5%;
-    padding-left: 15%;
+    padding: 15px 0;
+    padding-left: 150px;
+    box-sizing: border-box;
 }
 .header .title p{
     font-size: 18px;
     font-weight: 700;
-    padding: 0 15px;
+    padding-left: 15px;
     align-self: center;
 }
 .header .title svg{

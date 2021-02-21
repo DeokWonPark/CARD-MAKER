@@ -22,3 +22,6 @@ h2,h3,p,ul,input,div{
   margin: 0;
   padding: 0;
 }
+li{
+  list-style: none;
+}

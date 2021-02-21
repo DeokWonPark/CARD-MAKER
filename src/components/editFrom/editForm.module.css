@@ -1,0 +1,37 @@
+.editform{
+    padding-bottom: 30px;
+}
+.editform .input{
+    width: 48%;
+    padding: 10px;
+    margin: 3px 2px 3px 0;
+    font-weight: 700;
+    color: rgb(12, 125, 170);
+    box-sizing: border-box;
+    border-radius: 5px;
+    background-color: rgb(235, 245, 253);
+}
+.editform .textarea{
+    width: 96%;
+    padding: 10px;
+    font-weight: 700;
+    box-sizing: border-box;
+    border-radius: 5px;
+    margin: 3px 2px 0 0;
+    color: rgb(12, 125, 170);
+    background-color: rgb(235, 245, 253);
+}
+.editform .BtnBox{
+    display: flex;
+    margin: 0;
+}
+.editform .BtnBox .deleteBtn{
+    width: 48%;
+    background-color: rgb(89, 117, 139);
+    font-weight: 700;
+    border-radius: 5px;
+    cursor: pointer;
+}
+.editform .BtnBox .deleteBtn:hover{
+    opacity: 0.9;
+}

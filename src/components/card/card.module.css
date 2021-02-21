@@ -1,0 +1,26 @@
+.card{
+    width: 500px;
+    display: flex;
+    justify-content: left;
+    margin: 20px;
+    padding: 30px 20px;
+    box-sizing: border-box;
+    border-radius: 50px;
+    box-shadow: 10px 5px 5px rgb(0, 0, 0);
+    background-color: white;
+}
+.card .userImg{
+    width: 150px;
+    height: 150px;
+}
+.card .cardInfo{
+    width: 100%;
+    margin-left: 20px;
+}
+.card .cardInfo .cardName{
+    padding: 5px 0;
+}
+.card .cardInfo p{
+    margin-top: 5px;
+    font-size: 14px;
+}

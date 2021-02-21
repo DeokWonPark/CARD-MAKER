@@ -1,0 +1,37 @@
+.addform{
+    padding-bottom: 30px;
+}
+.addform .input{
+    width: 48%;
+    padding: 10px;
+    margin: 3px 2px 3px 0;
+    font-weight: 700;
+    color: rgb(12, 125, 170);
+    box-sizing: border-box;
+    border-radius: 5px;
+    background-color: rgb(255, 248, 230);
+}
+.addform .textarea{
+    width: 96%;
+    padding: 10px;
+    font-weight: 700;
+    box-sizing: border-box;
+    border-radius: 5px;
+    margin: 3px 2px 0 0;
+    color: rgb(12, 125, 170);
+    background-color: rgb(255, 248, 230);
+}
+.addform .BtnBox{
+    display: flex;
+    margin: 0;
+}
+.addform .BtnBox .addBtn{
+    width: 48%;
+    background-color: rgb(252, 225, 157);
+    font-weight: 700;
+    border-radius: 5px;
+    cursor: pointer;
+}
+.addform .BtnBox .addBtn:hover{
+    opacity: 0.9;
+}
