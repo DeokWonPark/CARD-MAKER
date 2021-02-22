@@ -1,11 +1,15 @@
 .File{
     width: 48%;
+    display: flex;
+    justify-content: center;
 }
 .File .fileInput{
     display: none;
 }
 .File .fileBtn{
     width: 100%;
+    display: flex;
+    justify-content: center;
     padding: 5px;
     font-weight: 700;
     box-sizing: border-box;
@@ -13,6 +17,25 @@
     background-color: rgb(205, 211, 221);
     cursor: pointer;
 }
+.File .fileBtn.on{
+    background-color: rgb(193, 241, 253);
+}
 .File .fileBtn:hover{
     opacity: 0.9;
+}
+.File .loading{
+    width: 0.7em;
+    height: 0.7em;
+    border-radius: 50%;
+    border: 3px solid gray;
+    border-top: 3px solid rgb(32, 162, 202);
+    animation: spin 2s linear infinite;
+}
+@keyframes spin{
+    0%{
+        transform: rotate(0deg);
+    }
+    100%{
+        transform: rotate(360deg);
+    }
 }

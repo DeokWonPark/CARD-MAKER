@@ -13,6 +13,7 @@
     background-repeat: no-repeat;
 }
 .card .userImg{
+    border-radius: 45%;
     width: 150px;
     height: 150px;
 }
