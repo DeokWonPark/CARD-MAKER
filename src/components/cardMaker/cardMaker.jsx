@@ -4,7 +4,7 @@ import Header from '../header/header';
 import Maker from '../maker/maker';
 import styles from './cardMaker.module.css';
 
-const CardMaker = ({authService,imageUpload}) => {
+const CardMaker = ({authService,imageUpload,database}) => {
     const historyState=useHistory().state;
     const history=useHistory(historyState && historyState.id);
     const [userId,setUserId]=useState();
@@ -23,7 +23,7 @@ const CardMaker = ({authService,imageUpload}) => {
     },[userId,history,authService])
     return <section className={styles.CardMaker}>
         <Header onLogout={onLogout}></Header>
-        <Maker imageUpload={imageUpload}></Maker>
+        <Maker imageUpload={imageUpload} database={database} userId={userId}></Maker>
     </section>
 }
 

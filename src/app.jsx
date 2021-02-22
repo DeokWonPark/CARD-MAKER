@@ -4,7 +4,7 @@ import { useEffect, useState } from 'react';
 import Login from './components/login/login';
 import CardMaker from './components/cardMaker/cardMaker';
 
-function App({authService,imageUpload}) {
+function App({authService,imageUpload,database}) {
 
   return <BrowserRouter>
     <Switch>
@@ -12,7 +12,7 @@ function App({authService,imageUpload}) {
         <Login authService={authService}></Login>
       </Route>
       <Route path={"/cardmaker"}>
-        <CardMaker authService={authService} imageUpload={imageUpload}></CardMaker>
+        <CardMaker authService={authService} imageUpload={imageUpload} database={database}></CardMaker>
       </Route>
     </Switch>
   </BrowserRouter>

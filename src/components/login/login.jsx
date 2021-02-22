@@ -22,7 +22,7 @@ const Login = ({authService}) => {
     })
     return <section className={styles.login}>
         <div className={styles.loginBox}>
-            <img src="/images/logo.png" alt="logo" className={styles.logoImg}/>
+            <img src="https://raw.githubusercontent.com/DeokWonPark/CARD-MAKER/master/public/images/logo.png" alt="logo" className={styles.logoImg}/>
             <h2 className={styles.title}>Business Card Maker</h2>
             <button className={styles.Btn} onClick={onLogin}>Sign With Google</button>
             <button className={styles.Btn} onClick={onLogin}>Sign With GitHub</button>

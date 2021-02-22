@@ -3,7 +3,7 @@ import AddForm from '../addForm/addForm';
 import EditForm from '../editFrom/editForm';
 import styles from './editor.module.css';
 
-const Editor = ({cards, updateCard,deleteCard,imageUpload,updateImg}) => {
+const Editor = ({cards, updateCard,deleteCard,imageUpload,updateImg,thema}) => {
     return <section className={styles.Editor}>
         <h2 className={styles.title}>Card Editor</h2>
         <div className={styles.editorBox}>
@@ -17,7 +17,7 @@ const Editor = ({cards, updateCard,deleteCard,imageUpload,updateImg}) => {
                 updateImg={updateImg}
                 ></EditForm>
             })}
-            <AddForm imageUpload={imageUpload}></AddForm>
+            <AddForm imageUpload={imageUpload} updateCard={updateCard} thema={thema}></AddForm>
         </div>
     </section>
 }

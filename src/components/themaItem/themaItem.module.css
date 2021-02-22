@@ -6,6 +6,10 @@
     border: 3px solid black;
     text-align: center;
 }
+.ThemaItem.select{
+    opacity: 0.3;
+    background-color: rgb(8, 18, 37);
+}
 .ThemaItem .ThemaBtn{
     background: none;
     padding: 0;

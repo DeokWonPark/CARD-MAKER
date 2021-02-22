@@ -1,45 +1,23 @@
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import Editor from '../editor/editor';
 import Preview from '../preview/preview';
 import Thema from '../thema/thema';
 import styles from './maker.module.css';
 
-const Maker = ({imageUpload}) => {
-    const [cards,setCards]=useState({
-        "1":{
-            id:"1",
-            name:"Pyosick",
-            company:"DRX",
-            title:"Enjoy Challenge",
-            email:"ejrdnjs96@gmail.com",
-            message:"Go DRX",
-            thema:"/images/thema1.jpg",
-            imgName:null,
-            imgURL:null,
-        },
-        "2":{
-            id:"2",
-            name:"Pyosick",
-            company:"DRX",
-            title:"Enjoy Challenge",
-            email:"ejrdnjs96@gmail.com",
-            message:"Go DRX",
-            thema:"/images/thema2.jpg",
-            imgName:null,
-            imgURL:null,
-        },
-        "3":{
-            id:"3",
-            name:"Pyosick",
-            company:"DRX",
-            title:"Enjoy Challenge",
-            email:"ejrdnjs96@gmail.com",
-            message:"Go DRX",
-            thema:"/images/thema3.jpg",
-            imgName:null,
-            imgURL:null,
-        },
-    });
+const Maker = ({imageUpload, database,userId}) => {
+    const defaultThema="https://raw.githubusercontent.com/DeokWonPark/CARD-MAKER/master/public/images/thema1.jpg";
+    const [thema,setThema]=useState(defaultThema);
+    const [cards,setCards]=useState({});
+
+    useEffect(()=>{
+        if(!userId){
+            return;
+        }
+        const unmount=database.read(userId,(cards)=>{
+            setCards(cards);
+        });
+        return ()=>{unmount();}
+    },[userId,database]);
 
     const updateCard=(card)=>{
         setCards(cards =>{
@@ -48,7 +26,8 @@ const Maker = ({imageUpload}) => {
                 [card.id]:card,
             };
             return updated;
-        })
+        });
+        database.write(card,userId);
     }
 
     const deleteCard=(card)=>{
@@ -56,7 +35,8 @@ const Maker = ({imageUpload}) => {
             const updated={...cards};
             delete updated[card.id];
             return updated;
-        })
+        });
+        database.removeCard(card,userId);
     }
 
     const updateImg=(imgInfo)=>{
@@ -65,17 +45,23 @@ const Maker = ({imageUpload}) => {
             updated[imgInfo.cardId].imgName=imgInfo.imgName;
             updated[imgInfo.cardId].imgURL=imgInfo.imgURL;
             return updated;
-        })
+        });
+        database.write(cards[imgInfo.cardId],userId);
+    }
+
+    const selectThema=(themaItem)=>{
+        setThema(themaItem.imgURL);
     }
 
     return <section className={styles.Maker}>
-        <Thema></Thema>
+        <Thema selectThema={selectThema} propsThema={thema}></Thema>
         <Editor 
         cards={cards} 
         updateCard={updateCard} 
         deleteCard={deleteCard} 
         imageUpload={imageUpload}
         updateImg={updateImg}
+        thema={thema}
         ></Editor>
         <Preview cards={cards}></Preview>
     </section>
