@@ -26,3 +26,13 @@
 .ThemaItem .ThemaName{
     color: white;
 }
+@media screen and (max-width:1024px){
+    .ThemaItem{
+        width: 185px;
+        height: 90px;
+    }
+    .ThemaItem img{
+        width: 185px;
+        height: 65px;
+    }
+}

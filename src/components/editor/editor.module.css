@@ -16,3 +16,9 @@
 .Editor .editorBox{
     padding: 20px;
 }
+
+@media screen and (max-width:1450px){
+    .Editor{
+        border-bottom: 3px dashed #bdddf6e5;
+    }
+}

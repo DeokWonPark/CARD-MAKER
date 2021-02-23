@@ -4,3 +4,18 @@
     flex: 1;
     min-height: 0;
 }
+.Maker .cardMaker{
+    display: flex;
+    overflow-y: auto;
+}
+
+@media screen and (max-width:1450px){
+    .Maker .cardMaker{
+        flex-direction: column;
+    }
+}
+@media screen and (max-width:1024px){
+    .Maker{
+        flex-direction: column;
+    }
+}

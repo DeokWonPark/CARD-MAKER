@@ -55,15 +55,17 @@ const Maker = ({imageUpload, database,userId}) => {
 
     return <section className={styles.Maker}>
         <Thema selectThema={selectThema} propsThema={thema}></Thema>
-        <Editor 
-        cards={cards} 
-        updateCard={updateCard} 
-        deleteCard={deleteCard} 
-        imageUpload={imageUpload}
-        updateImg={updateImg}
-        thema={thema}
-        ></Editor>
-        <Preview cards={cards}></Preview>
+        <div className={styles.cardMaker}>
+            <Editor
+            cards={cards}
+            updateCard={updateCard}
+            deleteCard={deleteCard}
+            imageUpload={imageUpload}
+            updateImg={updateImg}
+            thema={thema}
+            ></Editor>
+            <Preview cards={cards}></Preview>
+        </div>
     </section>
 }
 

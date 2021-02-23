@@ -11,7 +11,7 @@ function App({authService,imageUpload,database}) {
       <Route path={["/","/login"]} exact={true}>
         <Login authService={authService}></Login>
       </Route>
-      <Route path={"/cardmaker"}>
+      <Route path={"/CARD-MAKER"}>
         <CardMaker authService={authService} imageUpload={imageUpload} database={database}></CardMaker>
       </Route>
     </Switch>
